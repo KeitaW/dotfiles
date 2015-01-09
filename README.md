@@ -1,2 +1,2 @@
 # dotfiles
-A rep that contains configuration files
+A repo that contains configuration files
