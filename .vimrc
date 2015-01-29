@@ -46,6 +46,8 @@ nnoremap k gk
 "let g:quickrun_config={'_' : {'split': 'holizontal'}}
 let g:quickrun_config={ '_' : { "outputter/buffer/split":":botright"}}
 let s:hook = {"name" : "clear_quickfix","kind" : "hook"}
+let g:quickrun_config['markdown']={ 'outputter': 'browser'}
+let g:quickrun_config['cpp'] = { 'cmdopt': '-std=c++11' }
 
 if has('vim_starting')
   set runtimepath+=~/.vim/bundle/neobundle.vim
@@ -78,7 +80,10 @@ NeoBundle "Shougo/vimproc", {
 	\ }}
 " 補完用に jedi-vim を追加
 NeoBundle "davidhalter/jedi-vim"
-
+" Markdown環境用のプラグイン
+NeoBundle 'tpope/vim-markdown'
+NeoBundle 'kannokanno/previm'
+NeoBundle 'tyru/open-browser.vim'
 " pyenv 処理用に vim-pyenv を追加
 " Note: depends が指定されているため jedi-vim より後にロードされる（ことを期待）
 NeoBundleLazy "lambdalisue/vim-pyenv", {
