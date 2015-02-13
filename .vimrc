@@ -18,8 +18,9 @@ set vb t_vb=		" erase beep sound
 set novisualbell
 set list		" making invisible character visible	
 set listchars=eol:↲,tab:>-,trail:~,extends:>,precedes:<
-set autoindent		" set newline's tab in the same way as previous one
 set tabstop=4
+set autoindent		" set newline's tab in the same way as previous one
+set expandtab
 set shiftwidth=4
 set matchtime=3		" 対応するカッコの表示時間を3秒に
 set cindent			" C言語用のインデント（様子見）
