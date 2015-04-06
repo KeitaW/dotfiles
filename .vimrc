@@ -79,19 +79,10 @@ NeoBundle "Shougo/vimproc", {
 	\   "mac"       : "make -f make_mac.mak",
 	\   "unix"      : "make -f make_unix.mak",
 	\ }}
-" 補完用に jedi-vim を追加
-NeoBundle "davidhalter/jedi-vim"
 " Markdown環境用のプラグイン
 NeoBundle 'tpope/vim-markdown'
 NeoBundle 'kannokanno/previm'
 NeoBundle 'tyru/open-browser.vim'
-" pyenv 処理用に vim-pyenv を追加
-" Note: depends が指定されているため jedi-vim より後にロードされる（ことを期待）
-NeoBundleLazy "lambdalisue/vim-pyenv", {
-      \ "depends": ['davidhalter/jedi-vim'],
-      \ "autoload": {
-      \   "filetypes": ["python", "python3", "djangohtml"]
-      \ }}
 filetype plugin indent on
 
 " 未インストールのプラグインがある場合、インストールするかどうかを尋ねてくれるようにする設定
