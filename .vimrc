@@ -67,6 +67,7 @@ NeoBundle 'tpope/vim-surround'
 NeoBundle 'vim-scripts/Align'
 NeoBundle 'vim-scripts/YankRing.vim'
 NeoBundle 'cohama/agit.vim'
+NeoBundle 'rhysd/committia.vim'
 " DJANGO_SETTINGS_MODULE を自動設定
 NeoBundleLazy "lambdalisue/vim-django-support", {
       \ "autoload": {
