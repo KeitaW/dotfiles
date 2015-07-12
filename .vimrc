@@ -68,6 +68,8 @@ NeoBundle 'vim-scripts/Align'
 NeoBundle 'vim-scripts/YankRing.vim'
 NeoBundle 'cohama/agit.vim'
 NeoBundle 'rhysd/committia.vim'
+NeoBundle 'scrooloose/syntastic'
+let g:syntastic_python_checkers = ['pyflakes', 'pep8']
 " DJANGO_SETTINGS_MODULE を自動設定
 NeoBundleLazy "lambdalisue/vim-django-support", {
       \ "autoload": {
@@ -85,6 +87,7 @@ NeoBundle "Shougo/vimproc", {
 NeoBundle 'tpope/vim-markdown'
 NeoBundle 'kannokanno/previm'
 NeoBundle 'tyru/open-browser.vim'
+
 filetype plugin indent on
 
 " 未インストールのプラグインがある場合、インストールするかどうかを尋ねてくれるようにする設定
