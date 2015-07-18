@@ -73,6 +73,7 @@ NeoBundle 'altercation/vim-colors-solarized'
 syntax enable
 set background=light    "または dark
 colorscheme solarized
+let g:solarized_termcolors=256
 
 let g:syntastic_python_checkers = ['pyflakes', 'pep8']
 " DJANGO_SETTINGS_MODULE を自動設定
