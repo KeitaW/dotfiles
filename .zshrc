@@ -18,5 +18,6 @@ setopt auto_cd
 alias ...='cd ../..'
 alias ....='cd ../../../'
 alias ls='gls --color=auto'
+eval $(gdircolors ~/.dircolors-solarized)
 
 
