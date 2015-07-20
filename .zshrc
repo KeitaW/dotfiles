@@ -23,6 +23,10 @@ case "${OSTYPE}" in
         alias ls='gls --color=auto'
         eval $(gdircolors ~/.dircolors-solarized)
         ;;
+    linux*)
+        #ls colors (http://news.mynavi.jp/column/zsh/009/)
+        export LSCOLORS=xxfxcxdxbxegedabagacad
+        alias ls="ls -G"
 esac
 
 
