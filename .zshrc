@@ -17,6 +17,11 @@ zstyle ':completion:*:default' menu select=1
 setopt auto_cd
 alias ...='cd ../..'
 alias ....='cd ../../../'
-alias ls='gls --color=auto'
+# specific os settings
+case "${OSTYPE}" in
+    darwin*)
+        alias ls='gls --color=auto'
+        ;;
+esac
 
 
