@@ -17,16 +17,5 @@ zstyle ':completion:*:default' menu select=1
 setopt auto_cd
 alias ...='cd ../..'
 alias ....='cd ../../../'
-# specific os settings
-case "${OSTYPE}" in
-    darwin*)
-        alias ls='gls --color=auto'
-        eval $(gdircolors ~/.dircolors-solarized)
-        ;;
-    linux*)
-        #ls colors (http://news.mynavi.jp/column/zsh/009/)
-        export LSCOLORS=xxfxcxdxbxegedabagacad
-        alias ls="ls -G"
-esac
 
 
