@@ -71,7 +71,7 @@ NeoBundle 'rhysd/committia.vim'
 NeoBundle 'scrooloose/syntastic'
 NeoBundle 'altercation/vim-colors-solarized'
 syntax enable
-set background=light    "または dark
+set background=dark    "または dark
 colorscheme solarized
 let g:solarized_termcolors=256
 
