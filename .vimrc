@@ -1,3 +1,5 @@
+" autoload以下のディレクトリをちゃんと読みこむよう設定をすること
+" http://wakame.hatenablog.jp/entry/2014/09/05/085345 あたりを参考にしてやること
 " Normally we use vim-extensions. If you want true vi-compatibility
 " remove change the following statements
 set clipboard+=unnamed
