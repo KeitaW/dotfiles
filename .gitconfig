@@ -1,0 +1,6 @@
+# If you want to use this configuration, you need following lines in your-repo/.gitattributes
+# *.pptx diff=openxml
+# *.docx diff=openxml
+# *.xlsx diff=openxml
+[diff "openxml"]
+  textconv = ~/dotfiles/bin/unopenxml.sh
