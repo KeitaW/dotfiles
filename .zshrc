@@ -1,4 +1,4 @@
-source ~/.zshenv
+source ~/dotfiles/.zshenv
 # enable coloring
 umask 002
 autoload -Uz colors
