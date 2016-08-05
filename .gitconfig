@@ -4,3 +4,6 @@
 # *.xlsx diff=openxml
 [diff "openxml"]
   textconv = ~/dotfiles/bin/unopenxml.sh
+[user]
+	email = keitaw09@gmail.com
+	name = keitaw09@gmail.com
