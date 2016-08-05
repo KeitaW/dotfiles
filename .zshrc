@@ -14,8 +14,15 @@ zstyle ':completion:*:default' menu select=1
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
 
 setopt auto_cd
+alias sudo='sudo '
 alias ...='cd ../..'
 alias ....='cd ../../../'
+
+if [ -x "`which nvim`" ]; then
+    alias vi=nvim
+    alias vim=nvim
+fi 
+
 alias python2=$PYENV_ROOT/versions/anaconda2-4.0.0/bin/python2.7
 alias python3=$PYENV_ROOT/versions/anaconda3-4.0.0/bin/python3.5
 alias ctags=/usr/local/Cellar/ctags/5.8_1/bin/ctags
