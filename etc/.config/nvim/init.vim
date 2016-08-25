@@ -47,6 +47,7 @@ call dein#add('JuliaLang/julia-vim')
 call dein#add('rhysd/nyaovim-mini-browser')
 call dein#add('Lokaltog/vim-easymotion')
 call dein#add('Lokaltog/vim-easymotion')
+call dein#add('tpope/vim-fugitive')
 
 " You can specify revision/branch/tag.
 " call dein#add('Shougo/vimshell', { 'rev': '3787e5' })
