@@ -1,0 +1,14 @@
+#!/bin/sh
+#
+# eps2svg - convert svg file to eps file
+#
+if [ $# -ne 1 ]; then
+   cat<<EOF > /dev/stderr
+usage:
+    $0  input.svg
+EOF
+   exit 1
+fi
+output=`alter_extension $1 eps`
+inkscape -T -z -E $output $1 
+
