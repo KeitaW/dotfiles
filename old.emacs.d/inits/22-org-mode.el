@@ -1,4 +1,3 @@
-;; These lines are for using beta version of org-mode
 (require 'ox-latex)
 (require 'ox-bibtex)
 (require 'table)
@@ -12,15 +11,15 @@
         "dvipdfmx %b.dvi"))
 (setq org-export-latex-date-format "%Y-%m-%d")
 (add-to-list 'org-latex-classes
-             '("thesis"
+             '("paper"
                "\\documentclass[12pt, a4paper]{article}
                 [NO-PACKAGES]
                 [NO-DEFAULT-PACKAGES]
                 \\usepackage[dvipdfmx]{graphicx}
-		\\usepackage{amsmath}
+                \\usepackage{amsmath}
                 \\usepackage{natbib}
                 \\usepackage[dvipdfm]{geometry}
-		\\usepackage[boxed]{algorithm2e}
+                \\usepackage[boxed]{algorithm2e}
                 \\geometry{left=20mm,right=20mm,top=35mm,bottom=30mm} % 余白の微調整
                 "
 	       ("\\section{%s}" . "\\section*{%s}")
@@ -76,3 +75,6 @@
     (setq exec-path (split-string path-from-shell path-separator))))
 (set-exec-path-from-shell-PATH)
 
+;; Enable flyspell-mode
+(dolist (hook '(org-mode-hook))
+    (add-hook hook (lambda () (flyspell-mode 1))))
