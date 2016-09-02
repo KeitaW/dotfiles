@@ -1,0 +1,15 @@
+#!/bin/sh
+#
+# eps2svg - convert eps file to svg file
+#
+if [ $# -ne 1 ]; then
+   cat<<EOF > /dev/stderr
+usage:
+    $0  input.[jpeg, jpg]
+EOF
+   exit 1
+fi
+output=`alter_extension $1 png`
+convert $output -quality 100 $1
+
+
