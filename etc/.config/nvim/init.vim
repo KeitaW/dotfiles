@@ -6,15 +6,16 @@ set expandtab           "タブをスペースに置き換える
 set tabstop=4           "ファイル内の <Tab> が対応する空白の数
 set shiftwidth=4        "自動インデントの各段階に使われる空白の数
 set softtabstop=0       "<Tab>を押した時に挿入される空白の量(0:ts'で指定した量
+set nohlsearch
 
 " j,kによる移動を折り返されたテキストでも自然に振る舞うようにする
 nnoremap j gj
 nnoremap k gk
 " 入力モードでのカーソル移動
-inoremap <C-n> <Down>
-inoremap <C-p> <Up>
-inoremap <C-b> <Left>
-inoremap <C-f> <Right>
+" inoremap <C-n> <Down>
+" inoremap <C-p> <Up>
+" inoremap <C-b> <Left>
+" inoremap <C-f> <Right>
 
 set showmode               " Show current mode in command-line.
 syntax on
@@ -43,12 +44,15 @@ call dein#add('Shougo/dein.vim')
 call dein#add('Shougo/deoplete.nvim')
 call dein#add('Shougo/neosnippet.vim')
 call dein#add('Shougo/neosnippet-snippets')
+call dein#add('zchee/deoplete-jedi')
+call dein#add('zchee/deoplete-clang')
 call dein#add('JuliaLang/julia-vim')
 call dein#add('rhysd/nyaovim-mini-browser')
 call dein#add('Lokaltog/vim-easymotion')
 call dein#add('Lokaltog/vim-easymotion')
 call dein#add('tpope/vim-fugitive')
-
+call dein#add('mattn/emmet-vim')
+call dein#add('lervag/vimtex')
 " You can specify revision/branch/tag.
 " call dein#add('Shougo/vimshell', { 'rev': '3787e5' })
 
