@@ -18,7 +18,6 @@ inoremap <C-f> <Right>
 
 set showmode               " Show current mode in command-line.
 syntax on
-set autochdir
 " basic terminal settings
 " terminal modeESCでノーマルモードに
 :tnoremap <Esc> <C-\><C-n>
@@ -41,6 +40,7 @@ call dein#begin(expand('~/.config/nvim/dein'))
 call dein#add('Shougo/dein.vim')
 " Add or remove your plugins here:
 call dein#add('Shougo/deoplete.nvim')
+call dein#add('Shougo/denite.nvim')
 call dein#add('Shougo/neosnippet.vim')
 call dein#add('Shougo/neosnippet-snippets')
 call dein#add('JuliaLang/julia-vim')
