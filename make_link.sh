@@ -11,3 +11,4 @@ then
     mkdir ~/.config
 fi
 ln -s ~/dotfiles/etc/.config/* ~/.config/
+ln -sf ~/dotfiles/.spacemacs ~/.spacemacs
