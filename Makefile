@@ -28,6 +28,7 @@ deploy:
 
 init:
 	@DOTPATH=$(DOTPATH) bash $(DOTPATH)/etc/init.sh
+	@DOTPATH=$(DOTPATH) bash $(DOTPATH)/etc/init/common/vim/dein.sh
 
 test:
 	@DOTPATH=$(DOTPATH) bash $(DOTPATH)/etc/test/test.sh
