@@ -23,6 +23,8 @@ syntax on
 " terminal modeESCでノーマルモードに
 :tnoremap <Esc> <C-\><C-n>
 :tnoremap <C-c>c <C-\><C-n>
+" for clipboard
+set clipboard+=unnamedplus
 "End basic  settings------------
 
 
@@ -30,10 +32,9 @@ syntax on
 if &compatible
   set nocompatible               " Be iMproved
 endif
-" for clipboard
-set clipboard+=unnamedplus
+
 " Required:
-set runtimepath^=~/.config/nvim/dein/repos/github.com/Shougo/dein.vim
+set runtimepath+=~/.config/nvim/dein/repos/github.com/Shougo/dein.vim
 call dein#begin(expand('~/.config/nvim/dein'))
 
 " Required:
