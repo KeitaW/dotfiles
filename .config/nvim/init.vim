@@ -45,6 +45,7 @@ call dein#add('Shougo/deoplete.nvim')
 call dein#add('Shougo/denite.nvim')
 call dein#add('Shougo/neosnippet.vim')
 call dein#add('Shougo/neosnippet-snippets')
+call dein#add('davidhalter/jedi-vim')
 call dein#add('zchee/deoplete-jedi')
 call dein#add('zchee/deoplete-clang')
 call dein#add('JuliaLang/julia-vim')
@@ -70,6 +71,9 @@ endif
 "settings for plugins------
 " Use deoplete.
 let g:deoplete#enable_at_startup = 1
+" lib clang
+let g:deoplete#sources#clang#libclang_path='/usr/lib/x86_64-linux-gnu/libclang.so.1'
+let g:deoplete#sources#clang#clang_header='/usr/include/clang'
 " 4strok jump powered by vim-easymotion
 nmap s <Plug>(easymotion-overwin-f2)
 "End settings for plugins------
