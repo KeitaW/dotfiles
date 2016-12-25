@@ -29,9 +29,10 @@ values."
      ;; git
      ;; markdown
      org
-     ;; (shell :variables
-     ;;        shell-default-height 30
-     ;;        shell-default-position 'bottom)
+     shell
+     (shell :variables
+            shell-default-height 30
+            shell-default-position 'bottom)
      c-c++
      python
      spell-checking
@@ -108,8 +109,8 @@ values."
    dotspacemacs-colorize-cursor-according-to-state t
    ;; Default font. `powerline-scale' allows to quickly tweak the mode-line
    ;; size to make separators look not too crappy.
-   dotspacemacs-default-font '("Source Code Pro"
-                               :size 12
+   dotspacemacs-default-font '("Ricty Diminished Discord"
+                               :size 16
                                :weight normal
                                :width normal
                                :powerline-scale 1.1)
@@ -262,11 +263,20 @@ you should place your code here."
   (define-key evil-motion-state-map (kbd "<remap> <evil-previous-line>") 'evil-previous-visual-line)
                                         ; Make horizontal movement cross lines
   (setq-default evil-cross-lines t)
+  ;; map C-c to esc
+  (defun evil-escape-or-quit (&optional prompt)
+    (interactive)
+    (cond
+     ((or (evil-normal-state-p) (evil-insert-state-p) (evil-visual-state-p)
+          (evil-replace-state-p) (evil-visual-state-p)) [escape])
+     (t (kbd "C-g"))))
+  (define-key key-translation-map (kbd "C-c") #'evil-escape-or-quit)
+  (define-key evil-operator-state-map (kbd "C-c") #'evil-escape-or-quit)
+  (define-key evil-normal-state-map [escape] #'keyboard-quit)
   ;; org-mode configulations. Maybe these lines sould be separated into a different file...
   (require 'ox-latex)
   (require 'ox-bibtex)
   (require 'table)
-
   (setq org-latex-pdf-process
         '("platex %f"
           "platex %f"
@@ -361,7 +371,7 @@ you should place your code here."
  ;; If there is more than one, they won't work right.
  '(org-format-latex-options
    (quote
-    (:foreground "White" :background default :scale 1.0 :html-foreground "Black" :html-background "Transparent" :html-scale 1.0 :matchers
+    (:foreground "White" :background "White" :scale 1.0 :html-foreground "White" :html-background "Black" :html-scale 1.0 :matchers
                  ("begin" "$1" "$" "$$" "\\(" "\\[")))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
