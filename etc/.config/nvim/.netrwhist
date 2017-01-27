@@ -1,0 +1,10 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =8
+let g:netrw_dirhist_1='/Users/kei/dotfiles/etc'
+let g:netrw_dirhist_2='/Users/kei/dotfiles/etc/.config'
+let g:netrw_dirhist_3='/Users/kei/dotfiles/etc/.config/nvim'
+let g:netrw_dirhist_4='/Users/kei/dotfiles/etc/.config'
+let g:netrw_dirhist_5='/Users/kei/dotfiles/etc'
+let g:netrw_dirhist_6='/Users/kei/dotfiles'
+let g:netrw_dirhist_7='/Users/kei/dotfiles/.config'
+let g:netrw_dirhist_8='/Users/kei/dotfiles/.config/nvim'
