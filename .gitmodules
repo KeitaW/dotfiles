@@ -1,3 +1,6 @@
 [submodule "lib/python/fig_auto_assembler"]
 	path = etc/lib/python/fig_auto_assembler
 	url = git@github.com:KeWata/fig_auto_assembler.git
+[submodule "etc/lib/tex/latex-solarized"]
+	path = etc/lib/tex/latex-solarized
+	url = https://github.com/jez/latex-solarized.git

@@ -1,6 +1,6 @@
 DOTPATH := $(realpath $(dir $(lastword $(MAKEFILE_LIST))))
 CANDIDATES := $(wildcard .??*) bin
-EXCLUSIONS := .DS_Store .git .gitmodules .travis.yml .gitignore
+EXCLUSIONS := .DS_Store .git .gitmodules .travis.yml .gitignore .config
 DOTFILES := $(filter-out $(EXCLUSIONS), $(CANDIDATES))
 INITFILES = $(shell find etc/init -type f -name '*.sh')
 all: install
