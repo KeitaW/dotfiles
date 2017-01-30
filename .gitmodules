@@ -1,3 +1,3 @@
 [submodule "lib/python/fig_auto_assembler"]
-	path = lib/python/fig_auto_assembler
+	path = etc/lib/python/fig_auto_assembler
 	url = git@github.com:KeWata/fig_auto_assembler.git
