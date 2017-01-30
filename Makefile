@@ -2,7 +2,7 @@ DOTPATH := $(realpath $(dir $(lastword $(MAKEFILE_LIST))))
 CANDIDATES := $(wildcard .??*) bin
 EXCLUSIONS := .DS_Store .git .gitmodules .travis.yml .gitignore
 DOTFILES := $(filter-out $(EXCLUSIONS), $(CANDIDATES))
-
+INITFILES = $(shell find etc/init -type f -name '*.sh')
 all: install
 
 help:
@@ -20,6 +20,8 @@ list:
 	@echo "EXCLUSIONS:$(EXCLUSIONS)"
 	@echo "DOTFILES:$(DOTFILES)"
 	@$(foreach val, $(DOTFILES), /bin/ls -dF $(val);)
+	@echo "INITFILES:$(INITFILES)"
+	@$(foreach val, $(INITFILES), /bin/ls -dF $(val);)
 
 deploy:
 	@echo "==> Deploy process starts... Linking dotfiles to your home directory."
@@ -27,11 +29,13 @@ deploy:
 	@echo$(foreach val, $(DOTFILES), ln -sfnv $(abspath $(val)) $(HOME)/$(val);)
 
 init:
-	@DOTPATH=$(DOTPATH) bash $(DOTPATH)/etc/init.sh
-	@DOTPATH=$(DOTPATH) bash $(DOTPATH)/etc/init/common/vim/dein.sh
+	@echo$(foreach val, $(INITFILES), bash $(val))
+	@$(foreach val, $(INITFILES), bash $(val))
 
 test:
-	@DOTPATH=$(DOTPATH) bash $(DOTPATH)/etc/test/test.sh
+	# @DOTPATH=$(DOTPATH) bash $(DOTPATH)/etc/test/test.sh
+	@echo $(CANDIDATES)
+	@echo $(DOTFILES)
 
 update:
 	git pull origin master
