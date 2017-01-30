@@ -47,6 +47,7 @@ call dein#add('Shougo/neosnippet.vim')
 call dein#add('Shougo/neosnippet-snippets')
 call dein#add('davidhalter/jedi-vim')
 call dein#add('zchee/deoplete-jedi')
+call dein#add('JuliaEditorSupport/deoplete-julia')
 call dein#add('zchee/deoplete-clang')
 call dein#add('JuliaLang/julia-vim')
 call dein#add('rhysd/nyaovim-mini-browser')
@@ -55,6 +56,8 @@ call dein#add('Lokaltog/vim-easymotion')
 call dein#add('tpope/vim-fugitive')
 call dein#add('mattn/emmet-vim')
 call dein#add('lervag/vimtex')
+call dein#add('thinca/vim-quickrun')
+
 " You can specify revision/branch/tag.
 " call dein#add('Shougo/vimshell', { 'rev': '3787e5' })
 

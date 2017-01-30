@@ -5,7 +5,15 @@ autoload -Uz colors
 colors
 # Prompt
 PROMPT='[%F{magenta}%B%n%b%f@%F{blue}%U%m%u%f]# '
-RPROMPT='[%F{green}%d%f]'
+autoload -Uz vcs_info
+zstyle ':vcs_info:*' formats '[%b]'
+zstyle ':vcs_info:*' actionformats '[%b|%a]'
+precmd () {
+ psvar=()
+ LANG=en_US.UTF-8 vcs_info
+ [[ -n "$vcs_info_msg_0_" ]] && psvar[1]="$vcs_info_msg_0_"
+}
+RPROMPT="%1(v|%F{green}%1v%f|)[%F{green}%d%f]"
 # enable input completion
 autoload -Uz compinit
 compinit
