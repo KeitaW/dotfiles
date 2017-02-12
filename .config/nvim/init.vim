@@ -95,3 +95,16 @@ nnoremap っy yy
 inoremap <silent> っh <ESC>
 " End 快適な日本語入力のための設定----------
 
+" load local vimrc (.vimrc.local) if it exists
+" from  http://qiita.com/unosk/items/43989b61eff48e0665f3
+augroup vimrc-local
+  autocmd!
+  autocmd BufNewFile,BufReadPost * call s:vimrc_local(expand('<afile>:p:h'))
+augroup END
+
+function! s:vimrc_local(loc)
+  let files = findfile('.vimrc.local', escape(a:loc, ' ') . ';', -1)
+  for i in reverse(filter(files, 'filereadable(v:val)'))
+    source `=i`
+  endfor
+endfunction
