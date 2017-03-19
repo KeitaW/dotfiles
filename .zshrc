@@ -56,3 +56,6 @@ setopt hist_ignore_dups
 setopt EXTENDED_HISTORY
 setopt share_history
 setopt hist_ignore_space
+
+# 環境依存のコードは.bashrcでローカル管理することにする．とりあえず...
+source ~/.bashrc
