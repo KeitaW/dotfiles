@@ -29,11 +29,14 @@ values."
      ;; git
      ;; markdown
      org
-     ;; (shell :variables
-     ;;        shell-default-height 30
-     ;;        shell-default-position 'bottom)
+     shell
+     (shell :variables
+            shell-default-height 30
+            shell-default-position 'bottom)
+     c-c++
+     python
      spell-checking
-     ;; syntax-checking
+     syntax-checking
      ;; version-control
      )
    ;; List of additional packages that will be installed without being
@@ -95,10 +98,10 @@ values."
    ;; List of themes, the first of the list is loaded when spacemacs starts.
    ;; Press <SPC> T n to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
-   dotspacemacs-themes '(spacemacs-dark
+   dotspacemacs-themes '(solarized-dark
+                         spacemacs-dark
                          spacemacs-light
                          solarized-light
-                         solarized-dark
                          leuven
                          monokai
                          zenburn)
@@ -106,8 +109,8 @@ values."
    dotspacemacs-colorize-cursor-according-to-state t
    ;; Default font. `powerline-scale' allows to quickly tweak the mode-line
    ;; size to make separators look not too crappy.
-   dotspacemacs-default-font '("Source Code Pro"
-                               :size 12
+   dotspacemacs-default-font '("Ricty Diminished Discord"
+                               :size 16
                                :weight normal
                                :width normal
                                :powerline-scale 1.1)
@@ -260,11 +263,20 @@ you should place your code here."
   (define-key evil-motion-state-map (kbd "<remap> <evil-previous-line>") 'evil-previous-visual-line)
                                         ; Make horizontal movement cross lines
   (setq-default evil-cross-lines t)
+  ;; map C-c to esc
+  (defun evil-escape-or-quit (&optional prompt)
+    (interactive)
+    (cond
+     ((or (evil-normal-state-p) (evil-insert-state-p) (evil-visual-state-p)
+          (evil-replace-state-p) (evil-visual-state-p)) [escape])
+     (t (kbd "C-g"))))
+  (define-key key-translation-map (kbd "C-c") #'evil-escape-or-quit)
+  (define-key evil-operator-state-map (kbd "C-c") #'evil-escape-or-quit)
+  (define-key evil-normal-state-map [escape] #'keyboard-quit)
   ;; org-mode configulations. Maybe these lines sould be separated into a different file...
   (require 'ox-latex)
   (require 'ox-bibtex)
   (require 'table)
-
   (setq org-latex-pdf-process
         '("platex %f"
           "platex %f"
@@ -327,6 +339,9 @@ you should place your code here."
                 ))
   (setq org-latex-with-hyperref nil)
   ;; inline figure size setting
+  ; (setq org-format-latex-options (quote (:foreground auto :background auto :scale 1.5 :html-foreground auto :html-background auto :html-scale 1.5 :matchers ("begin" "$1" "$" "$$" "\\(" "\\["))))
+  (eval-after-load 'org
+    '(setf org-highlight-latex-and-related '(latex)))
   (setq org-image-actual-width 10)
   (defun set-exec-path-from-shell-PATH ()
     "Sets the exec-path to the same value used by the user shell"
@@ -349,3 +364,18 @@ you should place your code here."
 
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(org-format-latex-options
+   (quote
+    (:foreground "White" :background "White" :scale 1.0 :html-foreground "White" :html-background "Black" :html-scale 1.0 :matchers
+                 ("begin" "$1" "$" "$$" "\\(" "\\[")))))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )

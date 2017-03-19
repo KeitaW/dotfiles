@@ -23,6 +23,8 @@ syntax on
 " terminal modeESCでノーマルモードに
 :tnoremap <Esc> <C-\><C-n>
 :tnoremap <C-c>c <C-\><C-n>
+" for clipboard
+set clipboard+=unnamedplus
 "End basic  settings------------
 
 
@@ -30,10 +32,9 @@ syntax on
 if &compatible
   set nocompatible               " Be iMproved
 endif
-" for clipboard
-set clipboard+=unnamedplus
+
 " Required:
-set runtimepath^=~/.config/nvim/dein/repos/github.com/Shougo/dein.vim
+set runtimepath+=~/.config/nvim/dein/repos/github.com/Shougo/dein.vim
 call dein#begin(expand('~/.config/nvim/dein'))
 
 " Required:
@@ -44,14 +45,18 @@ call dein#add('Shougo/deoplete.nvim')
 call dein#add('Shougo/denite.nvim')
 call dein#add('Shougo/neosnippet.vim')
 call dein#add('Shougo/neosnippet-snippets')
+call dein#add('davidhalter/jedi-vim')
 call dein#add('zchee/deoplete-jedi')
+call dein#add('JuliaEditorSupport/deoplete-julia')
+call dein#add('zchee/deoplete-clang')
 call dein#add('JuliaLang/julia-vim')
 call dein#add('rhysd/nyaovim-mini-browser')
-call dein#add('Lokaltog/vim-easymotion')
 call dein#add('Lokaltog/vim-easymotion')
 call dein#add('tpope/vim-fugitive')
 call dein#add('mattn/emmet-vim')
 call dein#add('lervag/vimtex')
+call dein#add('thinca/vim-quickrun')
+
 " You can specify revision/branch/tag.
 " call dein#add('Shougo/vimshell', { 'rev': '3787e5' })
 
@@ -68,6 +73,9 @@ endif
 "settings for plugins------
 " Use deoplete.
 let g:deoplete#enable_at_startup = 1
+" lib clang
+let g:deoplete#sources#clang#libclang_path='/usr/lib/x86_64-linux-gnu/libclang.so.1'
+let g:deoplete#sources#clang#clang_header='/usr/include/clang'
 " 4strok jump powered by vim-easymotion
 nmap s <Plug>(easymotion-overwin-f2)
 "End settings for plugins------
@@ -86,3 +94,16 @@ nnoremap っy yy
 inoremap <silent> っh <ESC>
 " End 快適な日本語入力のための設定----------
 
+" load local vimrc (.vimrc.local) if it exists
+" from  http://qiita.com/unosk/items/43989b61eff48e0665f3
+augroup vimrc-local
+  autocmd!
+  autocmd BufNewFile,BufReadPost * call s:vimrc_local(expand('<afile>:p:h'))
+augroup END
+
+function! s:vimrc_local(loc)
+  let files = findfile('.vimrc.local', escape(a:loc, ' ') . ';', -1)
+  for i in reverse(filter(files, 'filereadable(v:val)'))
+    source `=i`
+  endfor
+endfunction

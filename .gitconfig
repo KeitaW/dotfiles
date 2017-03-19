@@ -5,5 +5,5 @@
 [diff "openxml"]
   textconv = ~/dotfiles/bin/unopenxml.sh
 [user]
-	name = keita.watanabe
+	name = Keita F. Watanabe
 	email = keitaw09@gmail.com
