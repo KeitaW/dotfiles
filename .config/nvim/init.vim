@@ -7,6 +7,8 @@ set tabstop=4           "ファイル内の <Tab> が対応する空白の数
 set shiftwidth=4        "自動インデントの各段階に使われる空白の数
 set softtabstop=0       "<Tab>を押した時に挿入される空白の量(0:ts'で指定した量
 set nohlsearch
+"vimrcをスペースドットで開く
+nnoremap <space>. :<c-u>tabedit $MYVIMRC<CR>
 
 " j,kによる移動を折り返されたテキストでも自然に振る舞うようにする
 nnoremap j gj
@@ -27,6 +29,17 @@ syntax on
 set clipboard+=unnamedplus
 "End basic  settings------------
 
+" タグジャンプに関する設定
+" [tag jump] カーソルの単語の定義先にジャンプ（複数候補はリスト表示）
+nnoremap tj :exe("tjump ".expand('<cword>'))<CR>
+" [tag back] tag stack を戻る -> tp(tag pop)よりもtbの方がしっくりきた
+nnoremap tb :pop<CR>
+" [tag next] tag stack を進む
+nnoremap tn :tag<CR>
+" [tag vertical] 縦にウィンドウを分割してジャンプ
+nnoremap tv :vsp<CR> :exe("tjump ".expand('<cword>'))<CR>
+" [tag horizon] 横にウィンドウを分割してジャンプ
+nnoremap th :split<CR> :exe("tjump ".expand('<cword>'))<CR>
 
 "dein Scripts-----------------------------
 if &compatible
@@ -57,7 +70,8 @@ call dein#add('tpope/vim-fugitive')
 call dein#add('mattn/emmet-vim')
 call dein#add('lervag/vimtex')
 call dein#add('thinca/vim-quickrun')
-
+call dein#add('kassio/neoterm')
+call dein#add('tpope/vim-surround')
 " You can specify revision/branch/tag.
 " call dein#add('Shougo/vimshell', { 'rev': '3787e5' })
 
@@ -80,6 +94,26 @@ let g:deoplete#sources#clang#clang_header='/usr/include/clang'
 " 4strok jump powered by vim-easymotion
 nmap s <Plug>(easymotion-overwin-f2)
 "End settings for plugins------
+
+" Neoterm
+au VimEnter,BufRead,BufNewFile *.jl set filetype=julia
+let g:neoterm_position = 'vertical'
+let g:neoterm_automap_keys = ',tt'
+" nnoremap <silent> ,tf :TREPLSendFile<cr>
+" nnoremap <silent> ,tl :TREPLSendLine<cr>
+" nnoremap <silent> ,ts :TREPLSendSelection<cr>
+nnoremap <silent> <f10> :TREPLSendFile<cr>
+nnoremap <silent> <f9> :TREPLSendLine<cr>
+vnoremap <silent> <f9> :TREPLSendSelection<cr>
+" open terminal
+nnoremap <silent> ,to :call neoterm#new()<cr>
+" hide/close terminal
+nnoremap <silent> ,th :call neoterm#close()<cr>
+" clear terminal
+nnoremap <silent> ,tc :call neoterm#clear()<cr>
+" kills the current job (send a <c-c>)
+nnoremap <silent> ,tk :call neoterm#kill()<cr>
+
 
 
 " 快適な日本語入力のための設定---------------
