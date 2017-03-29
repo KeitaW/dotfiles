@@ -8,7 +8,7 @@ set shiftwidth=4        "自動インデントの各段階に使われる空白�
 set softtabstop=0       "<Tab>を押した時に挿入される空白の量(0:ts'で指定した量
 set nohlsearch
 "vimrcをスペースドットで開く
-nnoremap <space>. :<c-u>tabedit $MYVIMRC<CR>
+nnoremap <space>. :<C-u>tabedit $MYVIMRC<CR>
 
 " j,kによる移動を折り返されたテキストでも自然に振る舞うようにする
 nnoremap j gj
