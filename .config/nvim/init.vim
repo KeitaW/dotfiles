@@ -6,13 +6,12 @@ set expandtab           "タブをスペースに置き換える
 set tabstop=4           "ファイル内の <Tab> が対応する空白の数
 set shiftwidth=4        "自動インデントの各段階に使われる空白の数
 set softtabstop=0       "<Tab>を押した時に挿入される空白の量(0:ts'で指定した量
-set nohlsearch
+"set hlsearch
+nnoremap <ESC><ESC> :nohlsearch<CR>
 "vimrcをスペースドットで開く
 nnoremap <space>. :<C-u>tabedit $MYVIMRC<CR>
+set hidden
 
-" j,kによる移動を折り返されたテキストでも自然に振る舞うようにする
-nnoremap j gj
-nnoremap k gk
 " 入力モードでのカーソル移動
 " inoremap <C-n> <Down>
 " inoremap <C-p> <Up>
@@ -40,6 +39,24 @@ nnoremap tn :tag<CR>
 nnoremap tv :vsp<CR> :exe("tjump ".expand('<cword>'))<CR>
 " [tag horizon] 横にウィンドウを分割してジャンプ
 nnoremap th :split<CR> :exe("tjump ".expand('<cword>'))<CR>
+
+" vimのリストをサクサク移動するためのキーマップ
+nnoremap <silent> [b :bprevious<CR>
+nnoremap <silent> ]b :bnext<CR>
+nnoremap <silent> [B :bprevious<CR>
+nnoremap <silent> ]B :bprevious<CR>
+
+ "quick chenge window size
+"ウィンドウを下に大きくする Ctrl-E + j
+"上に... Ctrl-E + k
+"左に... Ctrl-E + h
+"右に... Ctrl-E + l 
+nnoremap [winsize] <Nop>
+nmap <C-E> [winsize]
+nnoremap [winsize]k :resize -3<CR>
+nnoremap [winsize]j :resize +3<CR>
+nnoremap [winsize]h :vertical resize +10<CR>   
+nnoremap [winsize]l :vertical resize -10<CR>
 
 "dein Scripts-----------------------------
 if &compatible
@@ -71,6 +88,8 @@ call dein#add('lervag/vimtex')
 call dein#add('thinca/vim-quickrun')
 call dein#add('kassio/neoterm')
 call dein#add('tpope/vim-surround')
+call dein#add('tpope/vim-commentary.git')
+
 " You can specify revision/branch/tag.
 " call dein#add('Shougo/vimshell', { 'rev': '3787e5' })
 
