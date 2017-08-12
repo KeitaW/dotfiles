@@ -59,3 +59,42 @@ setopt hist_ignore_space
 
 # 環境依存のコードは.bashrcでローカル管理することにする．とりあえず...
 source ~/.bashrc
+
+# Replace command history search with peco.
+function peco-history-selection() {
+    BUFFER=`history -n 1 | tail -r  | awk '!a[$0]++' | peco`
+    CURSOR=$#BUFFER
+    zle reset-prompt
+}
+
+zle -N peco-history-selection
+bindkey '^R' peco-history-selection
+
+function changetitle {
+  # pwdを二回も実行しているのがなんかダサい...
+  current_dir=`pwd | sed -e "s%\(/\([^.]\|\..\)\)[^/]*%\1%g"``pwd | sed -e "s%^.*/\([^.]\|\..\)\([^/]*\)$%\2%"`
+  # タイトル用に整形
+  title=[${USER}@${HOST%%.*}]${current_dir}
+  case "${TERM}" in
+    xterm*|kterm*|rxvt*)
+      echo -ne "\033]0;${title}\007"
+    ;;  
+    screen*)
+      echo -ne "\033P\033]0;${title}\007\033\\"
+    ;;  
+  esac
+}
+
+# zsh起動時にとりあえず実行
+changetitle
+
+# cd実行後に変更
+function chpwd() {
+  changetitle
+}
+
+# Screenの場合、window切り替え時に前のwindowのタイトルがTerminal(＆タブ)のタイトルとして
+# 残ってしまうのでせめてcdコマンド以外のコマンドでも実行前にタイトルを変更
+preexec () {
+  changetitle
+}
