@@ -1,0 +1,19 @@
+#!/bin/bash 
+
+case "$OSTYPE" in
+  solaris*) OS="SOLARIS" ;;
+  darwin*)  OS="OSX" ;; 
+  linux*)   OS="LINUX" ;;
+  bsd*)     OS="BSD" ;;
+  *)        OS="unknown: $OSTYPE" ;;
+esac
+
+# If OS is LINUX. This script tries to find out which distribution is installed
+if [ "${OS}" = "Linux" ]; then
+    if [ -f /etc/redhad-release ]; then
+        OS="REDHAT"
+    fi
+fi
+echo $OS
+
+
