@@ -107,8 +107,11 @@ endif
 " Use deoplete.
 let g:deoplete#enable_at_startup = 1
 " lib clang
-let g:deoplete#sources#clang#libclang_path='/usr/lib/x86_64-linux-gnu/libclang.so.1'
-let g:deoplete#sources#clang#clang_header='/usr/include/clang'
+if has('mac')
+    let g:deoplete#sources#clang#libclang_path='/usr/local/bin/lib/libclang.dylib'
+    let g:deoplete#sources#clang#clang_header='/usr/local/bin/include/clang'
+    "let g:deoplete#sources#clang#clang_header='/usr/include/clang'
+endif
 " 4strok jump powered by vim-easymotion
 nmap s <Plug>(easymotion-overwin-f2)
 "End settings for plugins------
