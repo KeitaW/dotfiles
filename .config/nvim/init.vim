@@ -118,7 +118,7 @@ nmap s <Plug>(easymotion-overwin-f2)
 
 " Neoterm
 au VimEnter,BufRead,BufNewFile *.jl set filetype=julia
-let g:neoterm_position = 'vertical'
+" let g:neoterm_position = 'vertical'
 let g:neoterm_automap_keys = ',tt'
 " nnoremap <silent> ,tf :TREPLSendFile<cr>
 " nnoremap <silent> ,tl :TREPLSendLine<cr>
