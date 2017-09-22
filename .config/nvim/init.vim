@@ -12,12 +12,6 @@ nnoremap <ESC><ESC> :nohlsearch<CR>
 nnoremap <space>. :<C-u>tabedit $MYVIMRC<CR>
 set hidden
 
-" 入力モードでのカーソル移動
-" inoremap <C-n> <Down>
-" inoremap <C-p> <Up>
-" inoremap <C-b> <Left>
-" inoremap <C-f> <Right>
-
 set showmode               " Show current mode in command-line.
 syntax on
 " basic terminal settings
@@ -110,7 +104,10 @@ let g:deoplete#enable_at_startup = 1
 if has('mac')
     let g:deoplete#sources#clang#libclang_path='/usr/local/bin/lib/libclang.dylib'
     let g:deoplete#sources#clang#clang_header='/usr/local/bin/include/clang'
-    "let g:deoplete#sources#clang#clang_header='/usr/include/clang'
+endif
+if has('unix')
+    let g:deoplete#sources#clang#libclang_path='/usr/lib64/llvm/libclang.so'
+    let g:deoplete#sources#clang#clang_header='/usr/lib/clang'
 endif
 " 4strok jump powered by vim-easymotion
 nmap s <Plug>(easymotion-overwin-f2)
@@ -136,19 +133,6 @@ nnoremap <silent> ,tc :call neoterm#clear()<cr>
 nnoremap <silent> ,tk :call neoterm#kill()<cr>
 
 
-
-" 快適な日本語入力のための設定---------------
-" 日本語入力がオンのままでも使えるコマンド(Enterキーは必要)
-nnoremap あ a
-nnoremap い i
-nnoremap う u
-nnoremap お o
-nnoremap ｘ x
-nnoremap っd dd
-nnoremap っy yy
-" 日本語入力で”っh”と入力しても(hを選んだのは普段dvorakを使っているため)Enterキーで確定させればインサートモードを抜ける
-inoremap <silent> っh <ESC>
-" End 快適な日本語入力のための設定----------
 
 " load local vimrc (.vimrc.local) if it exists
 " from  http://qiita.com/unosk/items/43989b61eff48e0665f3
