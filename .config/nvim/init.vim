@@ -11,7 +11,6 @@ nnoremap <ESC><ESC> :nohlsearch<CR>
 "vimrcをスペースドットで開く
 nnoremap <space>. :<C-u>tabedit $MYVIMRC<CR>
 set hidden
-
 set showmode               " Show current mode in command-line.
 syntax on
 " basic terminal settings
