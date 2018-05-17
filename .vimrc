@@ -20,7 +20,6 @@ nnoremap k gk
 "
 " A (not so) minimal vimrc. (retrieved from https://github.com/mhinz/vim-galore/blob/master/content/minimal-vimrc.vim)
 "
-
 " You want Vim, not vi. When Vim finds a vimrc, 'nocomptaible' is set anyway.
 " We set it explicitely to make our position clear!
 set nocompatible
