@@ -11,7 +11,6 @@ nnoremap <ESC><ESC> :nohlsearch<CR>
 "vimrcをスペースドットで開く
 nnoremap <space>. :<C-u>tabedit $MYVIMRC<CR>
 set hidden
-
 set showmode               " Show current mode in command-line.
 syntax on
 " basic terminal settings
@@ -83,6 +82,9 @@ call dein#add('thinca/vim-quickrun')
 call dein#add('kassio/neoterm')
 call dein#add('tpope/vim-surround')
 call dein#add('tpope/vim-commentary.git')
+call dein#add('Vimjas/vim-python-pep8-indent')
+call dein#add('scrooloose/syntastic')
+call dein#add('qpkorr/vim-bufkill')
 
 " You can specify revision/branch/tag.
 " call dein#add('Shougo/vimshell', { 'rev': '3787e5' })
@@ -98,6 +100,11 @@ endif
 "End dein Scripts-------------------------
 
 "settings for plugins------
+" Denite settings
+call denite#custom#map('insert', '<C-j>', '<denite:move_to_next_line>', 'noremap')
+call denite#custom#map('insert', '<C-n>', '<denite:move_to_next_line>', 'noremap')
+call denite#custom#map('insert', '<C-k>', '<denite:move_to_previous_line>', 'noremap')
+call denite#custom#map('insert', '<C-p>', '<denite:move_to_previous_line>', 'noremap')
 " Use deoplete.
 let g:deoplete#enable_at_startup = 1
 " lib clang
@@ -147,3 +154,30 @@ function! s:vimrc_local(loc)
     source `=i`
   endfor
 endfunction
+
+""" yank to remote
+"let g:y2r_config = {
+"            \   'tmp_file': '/tmp/exchange_file',
+"            \   'key_file': expand('$HOME') . '/.exchange.key',
+"            \   'host': 'localhost',
+"            \   'port': 52224,
+"            \}
+"function Yank2Remote()
+"    call writefile(split(@", '\n'), g:y2r_config.tmp_file, 'b')
+"    let s:params = ['cat %s %s | nc -w1 %s %s']
+"    for s:item in ['key_file', 'tmp_file', 'host', 'port']
+"        let s:params += [shellescape(g:y2r_config[s:item])]
+"    endfor
+"    let s:ret = system(call(function('printf'), s:params))
+"endfunction
+"nnoremap <silent> <undean#addique> <Leader>y :call Yank2Remote()<CR>
+
+let g:syntastic_python_checkers = ["flake8"]
+nnoremap @p :T python %<CR> <c-w>j <c-w>k
+nnoremap @P :T python %<CR> <c-w>j
+
+set nolist  " 不可視文字をデフォルトでは表示しない
+set listchars=eol:¬,tab:>·,trail:~,extends:>,precedes:<,space:␣
+
+"let g:syntastic_python_checker_args='--ignore=E731'
+let g:syntastic_python_flake8_post_args='--ignore=E731'

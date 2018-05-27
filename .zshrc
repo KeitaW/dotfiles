@@ -52,17 +52,17 @@ export HISTSIZE=1000
 export SAVEHIST=100000
 # 重複を記録しない
 setopt hist_ignore_dups
-# 開始と終了を記録
-setopt EXTENDED_HISTORY
-setopt share_history
-setopt hist_ignore_space
+## 開始と終了を記録
+#setopt EXTENDED_HISTORY
+#setopt share_history
+#setopt hist_ignore_space
 
 # 環境依存のコードは.bashrcでローカル管理することにする．とりあえず...
 source ~/.bashrc
 
 # Replace command history search with peco.
 function peco-history-selection() {
-    BUFFER=`history -n 1 | tail -r  | awk '!a[$0]++' | peco`
+    BUFFER=`history -n 1 | tac  | awk '!a[$0]++' | peco`
     CURSOR=$#BUFFER
     zle reset-prompt
 }
