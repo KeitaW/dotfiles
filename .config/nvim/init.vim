@@ -50,6 +50,26 @@ nnoremap [winsize]k :resize -3<CR>
 nnoremap [winsize]j :resize +3<CR>
 nnoremap [winsize]h :vertical resize +10<CR>   
 nnoremap [winsize]l :vertical resize -10<CR>
+" Split window
+nmap ss :split<Return><C-w>w
+nmap sv :vsplit<Return><C-w>w
+" Move window
+nmap <Space> <C-w>w
+map s<left> <C-w>h
+map s<up> <C-w>k
+map s<down> <C-w>j
+map s<right> <C-w>l
+map sh <C-w>h
+map sk <C-w>k
+map sj <C-w>j
+map sl <C-w>l
+" Resize window
+nmap <C-w><left> <C-w><
+nmap <C-w><right> <C-w>>
+nmap <C-w><up> <C-w>+
+nmap <C-w><down> <C-w>-
+
+
 
 "dein Scripts-----------------------------
 if &compatible
@@ -64,14 +84,18 @@ call dein#begin(expand('~/.config/nvim/dein'))
 " Let dein manage dein
 call dein#add('Shougo/dein.vim')
 " Add or remove your plugins here:
+call dein#add('ryanoasis/vim-devicons')
 call dein#add('Shougo/deoplete.nvim')
 call dein#add('Shougo/denite.nvim')
+call dein#add('Shougo/unite.vim')
+call dein#add('Shougo/Defx.nvim')
+call dein#add('Shougo/vimfiler.vim')
+call dein#add('vim-airline/vim-airline')
+call dein#add('vim-airline/vim-airline-themes')
 call dein#add('Shougo/neosnippet.vim')
 call dein#add('Shougo/neosnippet-snippets')
 call dein#add('davidhalter/jedi-vim')
 call dein#add('zchee/deoplete-jedi')
-" call dein#add('JuliaEditorSupport/deoplete-julia')
-" call dein#add('zchee/deoplete-clang')
 call dein#add('JuliaLang/julia-vim')
 call dein#add('rhysd/nyaovim-mini-browser')
 call dein#add('Lokaltog/vim-easymotion')
@@ -181,3 +205,25 @@ set listchars=eol:¬,tab:>·,trail:~,extends:>,precedes:<,space:␣
 
 "let g:syntastic_python_checker_args='--ignore=E731'
 let g:syntastic_python_flake8_post_args='--ignore=E731'
+
+nmap sf :VimFilerBufferDir<Return>
+nmap sF :VimFilerExplorer -find<Return>
+nmap sb :Unite buffer<Return>
+let g:vimfiler_as_default_explorer = 1
+let g:vimfiler_safe_mode_by_default = 0
+let g:vimfiler_enable_auto_cd = 0
+let g:vimfiler_tree_leaf_icon = ''
+let g:vimfiler_tree_opened_icon = '▾'
+let g:vimfiler_tree_closed_icon = '▸'
+let g:vimfiler_marked_file_icon = '✓'
+
+
+" Vim-Airline Configuration
+" let g:airline#extensions#tabline#enabled = 1
+" let g:airline_powerline_fonts = 1 
+set laststatus=2
+let g:airline_theme='molokai'
+let g:airline_powerline_fonts = 1
+" let g:hybrid_custom_term_colors = 1
+" let g:hybrid_reduced_contrast = 1 
+
