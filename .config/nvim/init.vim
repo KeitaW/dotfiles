@@ -250,4 +250,3 @@ let g:airline_symbols.whitespace = 'Ξ'	"空白の警告(余分な空白など)
 if has('gui_running')
     set guifont=Fira\ Mono\ for\ Powerline
 endif
-
