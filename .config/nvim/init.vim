@@ -92,12 +92,18 @@ call dein#add('Shougo/Defx.nvim')
 call dein#add('Shougo/vimfiler.vim')
 call dein#add('vim-airline/vim-airline')
 call dein#add('vim-airline/vim-airline-themes')
+<<<<<<< HEAD
 call dein#add('edkolev/tmuxline.vim')
+=======
+>>>>>>> db4958e5d9ffc9eb4cc5a4f6ec83a11c4d770f01
 call dein#add('Shougo/neosnippet.vim')
 call dein#add('Shougo/neosnippet-snippets')
 call dein#add('davidhalter/jedi-vim')
 call dein#add('zchee/deoplete-jedi')
+<<<<<<< HEAD
 call dein#add('zchee/deoplete-clang')
+=======
+>>>>>>> db4958e5d9ffc9eb4cc5a4f6ec83a11c4d770f01
 call dein#add('JuliaLang/julia-vim')
 call dein#add('rhysd/nyaovim-mini-browser')
 call dein#add('Lokaltog/vim-easymotion')
@@ -250,4 +256,3 @@ let g:airline_symbols.whitespace = 'Ξ'	"空白の警告(余分な空白など)
 if has('gui_running')
     set guifont=Fira\ Mono\ for\ Powerline
 endif
-
