@@ -71,7 +71,7 @@ call dein#add('Shougo/neosnippet-snippets')
 call dein#add('davidhalter/jedi-vim')
 call dein#add('zchee/deoplete-jedi')
 " call dein#add('JuliaEditorSupport/deoplete-julia')
-call dein#add('zchee/deoplete-clang')
+" call dein#add('zchee/deoplete-clang')
 call dein#add('JuliaLang/julia-vim')
 call dein#add('rhysd/nyaovim-mini-browser')
 call dein#add('Lokaltog/vim-easymotion')
@@ -109,8 +109,9 @@ call denite#custom#map('insert', '<C-p>', '<denite:move_to_previous_line>', 'nor
 let g:deoplete#enable_at_startup = 1
 " lib clang
 if has('mac')
-    let g:deoplete#sources#clang#libclang_path='/usr/local/bin/lib/libclang.dylib'
-    let g:deoplete#sources#clang#clang_header='/usr/local/bin/include/clang'
+" use clang installed by brew
+    let g:deoplete#sources#clang#libclang_path='/usr/local/Cellar/llvm/6.0.0/lib/libclang.dylib'
+    let g:deoplete#sources#clang#clang_header='/usr/local/opt/llvm/lib/clang'
 endif
 if has('unix')
     let g:deoplete#sources#clang#libclang_path='/usr/lib64/llvm/libclang.so'
@@ -181,3 +182,6 @@ set listchars=eol:¬,tab:>·,trail:~,extends:>,precedes:<,space:␣
 
 "let g:syntastic_python_checker_args='--ignore=E731'
 let g:syntastic_python_flake8_post_args='--ignore=E731'
+let g:syntastic_cpp_checkers = ['gcc']
+let g:syntastic_cpp_compiler = 'gcc'
+let g:syntastic_cpp_compiler_options = '-std=c++14'
