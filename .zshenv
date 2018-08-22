@@ -1,6 +1,6 @@
 export PATH=/usr/local/bin:$PATH
 export PATH=/usr/bin:$PATH
-export PATH=~/dotfiles/bin:$PATH
+export PATH=~/dotfiles/bin/bash:$PATH
 export PATH=/usr/local/Cellar/coreutils/8.25/bin:$PATH
 export PATH=/usr/local/opt/findutils/bin:$PATH
 export XDG_CONFIG_HOME=~/.config

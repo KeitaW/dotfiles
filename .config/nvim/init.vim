@@ -50,6 +50,26 @@ nnoremap [winsize]k :resize -3<CR>
 nnoremap [winsize]j :resize +3<CR>
 nnoremap [winsize]h :vertical resize +10<CR>   
 nnoremap [winsize]l :vertical resize -10<CR>
+" Split window
+nmap ss :split<Return><C-w>w
+nmap sv :vsplit<Return><C-w>w
+" Move window
+nmap <Space> <C-w>w
+map s<left> <C-w>h
+map s<up> <C-w>k
+map s<down> <C-w>j
+map s<right> <C-w>l
+map sh <C-w>h
+map sk <C-w>k
+map sj <C-w>j
+map sl <C-w>l
+" Resize window
+nmap <C-w><left> <C-w><
+nmap <C-w><right> <C-w>>
+nmap <C-w><up> <C-w>+
+nmap <C-w><down> <C-w>-
+
+
 
 "dein Scripts-----------------------------
 if &compatible
@@ -64,8 +84,15 @@ call dein#begin(expand('~/.config/nvim/dein'))
 " Let dein manage dein
 call dein#add('Shougo/dein.vim')
 " Add or remove your plugins here:
+call dein#add('ryanoasis/vim-devicons')
 call dein#add('Shougo/deoplete.nvim')
 call dein#add('Shougo/denite.nvim')
+call dein#add('Shougo/unite.vim')
+call dein#add('Shougo/Defx.nvim')
+call dein#add('Shougo/vimfiler.vim')
+call dein#add('vim-airline/vim-airline')
+call dein#add('vim-airline/vim-airline-themes')
+call dein#add('edkolev/tmuxline.vim')
 call dein#add('Shougo/neosnippet.vim')
 call dein#add('Shougo/neosnippet-snippets')
 call dein#add('davidhalter/jedi-vim')
@@ -85,7 +112,7 @@ call dein#add('tpope/vim-commentary.git')
 call dein#add('Vimjas/vim-python-pep8-indent')
 call dein#add('scrooloose/syntastic')
 call dein#add('qpkorr/vim-bufkill')
-
+call map(dein#check_clean(), "delete(v:val, 'rf')")
 " You can specify revision/branch/tag.
 " call dein#add('Shougo/vimshell', { 'rev': '3787e5' })
 
@@ -177,11 +204,54 @@ let g:syntastic_python_checkers = ["flake8"]
 nnoremap @p :T python %<CR> <c-w>j <c-w>k
 nnoremap @P :T python %<CR> <c-w>j
 
-set nolist  " 不可視文字をデフォルトでは表示しない
-set listchars=eol:¬,tab:>·,trail:~,extends:>,precedes:<,space:␣
+" set nolist  " 不可視文字をデフォルトでは表示しない
+" set listchars=eol:¬,tab:>·,trail:~,extends:>,precedes:<,space:␣
 
 "let g:syntastic_python_checker_args='--ignore=E731'
 let g:syntastic_python_flake8_post_args='--ignore=E731'
 let g:syntastic_cpp_checkers = ['gcc']
 let g:syntastic_cpp_compiler = 'gcc'
 let g:syntastic_cpp_compiler_options = '-std=c++14'
+
+nmap sf :VimFilerBufferDir<Return>
+nmap sF :VimFilerExplorer -find<Return>
+nmap sb :Unite buffer<Return>
+let g:vimfiler_as_default_explorer = 1
+let g:vimfiler_safe_mode_by_default = 0
+let g:vimfiler_enable_auto_cd = 0
+let g:vimfiler_tree_leaf_icon = ''
+let g:vimfiler_tree_opened_icon = '▾'
+let g:vimfiler_tree_closed_icon = '▸'
+let g:vimfiler_marked_file_icon = '✓'
+
+
+" Vim-Airline Configuration
+let g:airline#extensions#tabline#enabled = 1
+let g:airline_powerline_fonts = 1 
+set ambiwidth=double
+set laststatus=2
+let g:airline_theme='papercolor'
+let g:airline_powerline_fonts = 1
+let g:Powerline_symbols = 'unicode'
+let g:hybrid_custom_term_colors = 1
+let g:hybrid_reduced_contrast = 1 
+if !exists('g:airline_symbols')
+	let g:airline_symbols = {}
+endif
+"左側に使用されるセパレータ
+let g:airline_left_sep = '⮀'
+let g:airline_left_alt_sep = '⮁'
+"右側に使用されるセパレータ
+let g:airline_right_sep = '⮂'
+let g:airline_right_alt_sep = '⮃'
+let g:airline_symbols.crypt = '🔒'		"暗号化されたファイル
+let g:airline_symbols.linenr = '¶'			"行
+let g:airline_symbols.maxlinenr = '㏑'		"最大行
+let g:airline_symbols.branch = '⭠'		"gitブランチ
+let g:airline_symbols.paste = 'ρ'			"ペーストモード
+let g:airline_symbols.spell = 'Ꞩ'			"スペルチェック
+let g:airline_symbols.notexists = '∄'		"gitで管理されていない場合
+let g:airline_symbols.whitespace = 'Ξ'	"空白の警告(余分な空白など)
+if has('gui_running')
+    set guifont=Fira\ Mono\ for\ Powerline
+endif
