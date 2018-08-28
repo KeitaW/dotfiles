@@ -69,7 +69,10 @@ nmap <C-w><right> <C-w>>
 nmap <C-w><up> <C-w>+
 nmap <C-w><down> <C-w>-
 
-
+" syntax hightlight for snakefile
+set runtimepath+=~/.config/nvim/syntax
+au BufNewFile,BufRead Snakefile set syntax=snakemake
+au BufNewFile,BufRead *.snake set syntax=snakemake
 
 "dein Scripts-----------------------------
 if &compatible
@@ -248,5 +251,5 @@ let g:airline_symbols.spell = 'Ꞩ'			"スペルチェック
 let g:airline_symbols.notexists = '∄'		"gitで管理されていない場合
 let g:airline_symbols.whitespace = 'Ξ'	"空白の警告(余分な空白など)
 if has('gui_running')
-    set guifont=Fira\ Mono\ for\ Powerline
+    set guifont=Source\ Code\ Pro\ for\ Powerline
 endif
