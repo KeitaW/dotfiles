@@ -1,0 +1,6 @@
+#!/bin/bash
+
+export GYAZO_TOKEN=$(cat ~/tokens/gyazo)
+INFILE=$1
+OUTFILE=$(alter_extension $1 json)
+bundle exec jupyter_to_scrapbox convert $INFILE --image > $OUTFILE
