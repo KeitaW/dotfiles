@@ -9,4 +9,5 @@ else
 	echo "$NVIMDIR exists. Skip."
 fi
 sh ./installer.sh  ~/.config/nvim/dein 
+mkdir ~/.config/nvim/syntax
 rm installer.sh
