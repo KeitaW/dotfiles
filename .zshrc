@@ -33,7 +33,6 @@ fi
 
 alias python2=$PYENV_ROOT/versions/anaconda2-4.0.0/bin/python2.7
 alias python3=$PYENV_ROOT/versions/anaconda3-4.0.0/bin/python3.5
-alias ctags=/usr/local/Cellar/ctags/5.8_1/bin/ctags
 # monogusa aliases
 alias cD='cd ~/dotfiles'
 # monogusa temporary aliases
