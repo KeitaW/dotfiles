@@ -31,18 +31,8 @@ if [ -x "`which nvim`" ]; then
     alias vim=nvim
 fi 
 
-alias python2=$PYENV_ROOT/versions/anaconda2-4.0.0/bin/python2.7
-alias python3=$PYENV_ROOT/versions/anaconda3-4.0.0/bin/python3.5
 # monogusa aliases
 alias cD='cd ~/dotfiles'
-# monogusa temporary aliases
-alias cY='cd ~/Projects/YACuSA'
-alias cYB='cd ~/Projects/YACuSA/bin'
-alias cYR='cd ~/Projects/YACuSA/results'
-alias cYL='cd ~/Projects/YACuSA/lib'
-alias cYLU='cd ~/Projects/YACuSA/lib/utils'
-alias cYn='cd ~/Projects/YACuSA/notes'
-alias cA='cd ~/Dropbox/labResearch/2016_03_article/'
 # Logs will be saved in .zsh_history
 export HISTFILE=${HOME}/.zsh_history
 # メモリに保存される履歴の件数
