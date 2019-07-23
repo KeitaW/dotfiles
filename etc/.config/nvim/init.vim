@@ -1,1 +1,0 @@
-/Users/watanabekeita/dotfiles/.config/nvim/init.vim
