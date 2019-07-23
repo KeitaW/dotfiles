@@ -1,6 +1,9 @@
-source ~/dotfiles/.zshenv
+# Environment Variables
+export XDG_CONFIG_HOME=~/.config
+export CLICOLOR=1
+export LSCLORS=GxFxCxDxBxegedabagaced
+
 # enable coloring
-umask 002
 autoload -Uz colors
 colors
 # Prompt
@@ -21,6 +24,7 @@ zstyle ':completion:*:default' menu select=1
 # make completion functionality case insensitive
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
 
+# CDs
 setopt auto_cd
 alias sudo='sudo '
 alias ...='cd ../..'
@@ -42,12 +46,9 @@ export SAVEHIST=100000
 # 重複を記録しない
 setopt hist_ignore_dups
 ## 開始と終了を記録
-#setopt EXTENDED_HISTORY
-#setopt share_history
-#setopt hist_ignore_space
-
-# 環境依存のコードは.bashrcでローカル管理することにする．とりあえず...
-source ~/.bashrc
+setopt EXTENDED_HISTORY
+setopt share_history
+setopt hist_ignore_space
 
 # Replace command history search with peco.
 function peco-history-selection() {
@@ -87,3 +88,4 @@ function chpwd() {
 preexec () {
   changetitle
 }
+
