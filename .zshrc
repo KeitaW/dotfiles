@@ -42,9 +42,9 @@ export SAVEHIST=100000
 # 重複を記録しない
 setopt hist_ignore_dups
 ## 開始と終了を記録
-#setopt EXTENDED_HISTORY
-#setopt share_history
-#setopt hist_ignore_space
+setopt EXTENDED_HISTORY
+setopt share_history
+setopt hist_ignore_space
 
 # 環境依存のコードは.bashrcでローカル管理することにする．とりあえず...
 source ~/.bashrc
