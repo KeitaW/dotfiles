@@ -5,5 +5,8 @@
 [diff "openxml"]
   textconv = ~/dotfiles/bin/unopenxml.sh
 [user]
-	name = Keita F. Watanabe
+	name = Keita Watanabe
 	email = keitaw09@gmail.com
+[alias]
+    current-branch-name = ! git branch | grep -e '^\\* ' | sed -e 's/^\\* //g'
+    force-pull = !git fetch && git reset --hard origin/$(git current-branch)
