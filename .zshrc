@@ -89,3 +89,9 @@ preexec () {
   changetitle
 }
 
+# Load local config
+LOCALCONFIG="$HOME/.zshrclocal"
+if [ -f "$HOME/.local/bin" ] ; then
+    source $LOCALCONFIG
+fi
+
