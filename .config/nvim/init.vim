@@ -34,8 +34,8 @@ nnoremap tv :vsp<CR> :exe("tjump ".expand('<cword>'))<CR>
 nnoremap th :split<CR> :exe("tjump ".expand('<cword>'))<CR>
 
 " vimのリストをサクサク移動するためのキーマップ
-nnoremap <silent> bp :bprevious<CR>
-nnoremap <silent> bn :bnext<CR>
+nnoremap <silent> ]p :bprevious<CR>
+nnoremap <silent> ]n :bnext<CR>
 
  "quick chenge window size
 "ウィンドウを下に大きくする Ctrl-E + j
