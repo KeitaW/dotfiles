@@ -4,6 +4,8 @@
 # *.xlsx diff=openxml
 [diff "openxml"]
   textconv = ~/dotfiles/bin/unopenxml.sh
+[diff]
+    tool = vimdiff
 [user]
 	name = Keita Watanabe
 	email = keitaw09@gmail.com
