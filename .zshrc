@@ -91,7 +91,7 @@ preexec () {
 
 # Load local config
 LOCALCONFIG="$HOME/.zshrclocal"
-if [ -f "$HOME/.local/bin" ] ; then
+if [ -f $LOCALCONFIG ] ; then
     source $LOCALCONFIG
 fi
 
