@@ -11,6 +11,6 @@
 	email = keitaw09@gmail.com
 [alias]
     current-branch-name = ! git branch | grep -e '^\\* ' | sed -e 's/^\\* //g'
-    force-pull = !git fetch && git reset --hard origin/$(git current-branch)
+    force-pull = !git fetch && git reset --hard origin/$(git current-branch-name)
     rename-branch-remote = "!f() { git branch -m $1 $2 && git push origin :$1 && git push origin $2;}; f"
     delete-branch-remote = "!f() { git branch -D $1 && git push origin :$1;}; f"
