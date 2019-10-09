@@ -14,3 +14,4 @@
     force-pull = !git fetch && git reset --hard origin/$(git current-branch-name)
     rename-branch-remote = "!f() { git branch -m $1 $2 && git push origin :$1 && git push origin $2;}; f"
     delete-branch-remote = "!f() { git branch -D $1 && git push origin :$1;}; f"
+	push-f = push --force-with-lease
