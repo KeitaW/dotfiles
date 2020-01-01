@@ -1,5 +1,5 @@
 # dotfiles
-A repo that contains configuration files.
+A repository that contains configuration files.
 
 ## References
 This repo is based on
