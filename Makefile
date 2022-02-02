@@ -36,6 +36,7 @@ deploy:
 init:
 	@echo$(foreach val, $(INITFILES), bash $(val);)
 	@$(foreach val, $(INITFILES), bash $(val);)
+	@$(mkdir -p ~/.config)
 
 test:
 	# @DOTPATH=$(DOTPATH) bash $(DOTPATH)/etc/test/test.sh
