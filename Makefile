@@ -3,7 +3,6 @@ CANDIDATES := $(wildcard .??*) bin
 EXCLUSIONS := .DS_Store .git .gitmodules .travis.yml .gitignore
 DOTFILES := $(filter-out $(EXCLUSIONS), $(CANDIDATES))
 INITFILES := $(shell find etc/init -type f -name '*.sh')
-DOTCONFIG := $(shell find .config -type f -not -name '.gitignore')
 all: install
 
 help:
@@ -23,15 +22,12 @@ list:
 	@$(foreach val, $(DOTFILES), /bin/ls -dF $(val);)
 	@echo "INITFILES:$(INITFILES)"
 	@$(foreach val, $(INITFILES), /bin/ls -dF $(val);)
-	@echo "DOTCONFIG:$(DOTCONFIG)"
 
 deploy:
 	@echo "==> Deploy process starts... Linking dotfiles to your home directory."
 	@echo ""
 	@echo$(foreach val, $(DOTFILES), ln -sfnv $(abspath $(val)) $(HOME)/$(val);)
 	@$(foreach val, $(DOTFILES), ln -sfnv $(abspath $(val)) $(HOME)/$(val);)
-	@echo$(foreach val, $(DOTCONFIG), ln -sfnv $(abspath $(val)) $(HOME)/$(val);)
-	@$(foreach val, $(DOTCONFIG), ln -sfnv $(abspath $(val)) $(HOME)/$(val);)
 
 init:
 	@echo$(foreach val, $(INITFILES), bash $(val);)
